@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head><title>Demo</title></head>
+<body>
+  <script>
+    const fonts = `MicroKnight_v1.0.woff
+mO'sOul_v1.0.woff
+P0T-NOoDLE_v1.0.woff
+TopazPlus_a1200_v1.0.woff
+TopazPlus_a500_v1.0.woff
+Topaz_a1200_v1.0.woff
+Topaz_a500_v1.0.woff`.split('\n');
+    const fontFaces = fonts.map((x, i) => ([`
+
+p:nth-of-type(${i+1}) {
+  font-family: aFont${i};
+}
+
+`, `@font-face {
+  font-family: aFont${i};
+  src: url("${x}");
+}
+
+`]));
+    fontFaces.forEach(([fontFace, pStyle, tag]) => {
+      const style = document.createElement('style');
+      document.head.append(style);
+      style.sheet.insertRule(fontFace);
+      style.sheet.insertRule(pStyle);
+    });
+    fontFaces
+      .map((x, i) => {
+        const el = document.createElement('P')
+        el.innerText = fonts[i];
+        return el;
+      }).forEach(x => document.body.append(x));
+  </script>
+</body>
+
+
+</html>

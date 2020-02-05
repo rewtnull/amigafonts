@@ -384,10 +384,16 @@
       =====================
 
 
-      Font embedding is easy. Just add something like this
-      to a stylesheet; let's call it style.css:
+      Font embedding is easy. Use WOFF (Web Open Font Format), or
+      other formats for very old browsers. Just add something 
+      like this to a stylesheet; let's call it style.css:
 
-            
+            /* IE9+/every other browser */
+            @font-face {
+                  font-family:P0T-NOoDLE;
+                  src: url(P0T-NOoDLE_v1.0.woff) format('woff');
+            }
+
             /* IE6/7/8 */
             @font-face {
                        font-family:P0T-NOoDLE;
@@ -427,6 +433,8 @@
       Explorer v6+, and it has been successfully tested in Windows, Linux
       and OSX.
 
+      The woff fonts where converted with npm package 'ttf2woff'.
+      https://www.npmjs.com/package/ttf2woff
 
       11. CREDITS AND THANKS
       ======================
